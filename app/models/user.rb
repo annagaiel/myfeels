@@ -5,4 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   validates :fullname, :presence => true, length: {maximum: 50, minimum: 2}
+
+  has_many :phrases
 end
