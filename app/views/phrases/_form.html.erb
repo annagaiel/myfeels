@@ -4,8 +4,15 @@
   </div>
   <div class="panel-body">
     <div class="container">
-
-
+      <%= simple_form_for @phrase do |f| %>
+        <%= f.input :phrase %>
+        <%= f.input :author %>
+        <%= f.input :background %>
+        <%= f.input :foreground %>
+        <%= f.input :font %>
+        <br />
+        <%= f.submit 'Create', :class => 'btn btn-primary' %>
+      <% end %>
     </div>
   </div>
 </div>

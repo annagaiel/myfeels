@@ -1,1 +1,13 @@
 <h1>Phrases#index</h1>
+
+<% @phrases.each do |my_phrase| %>
+  <div class="col-xs-10 col-xs-offset-1">
+    <p><%= my_phrase.phrase %></p>
+    <p><%= my_phrase.author %></p>
+
+    <p><%= my_phrase.background %></p>
+    <p><%= my_phrase.foreground %></p>
+    <p><%= my_phrase.font %></p>
+
+  </div>
+<% end %>
