@@ -1,5 +1,7 @@
 class PhrasesController < ApplicationController
+  before_action :set_phrase, only: [:edit, :update, :delete]
   before_action :authenticate_user!, :only => [:new, :create, :edit, :update, :destroy]
+
   def index
     @phrases = Phrase.all
   end
@@ -12,7 +14,7 @@ class PhrasesController < ApplicationController
     @phrase = current_user.phrases.create(phrase_params)
 
     if @phrase.valid?
-      redirect_to phrases_path
+      redirect_to phrases_path, notice: "Saved..."
     else
       render :new, :status => :unprocessable_entity
     end
@@ -27,16 +29,12 @@ class PhrasesController < ApplicationController
 
 
   def edit
-    @phrase = Phrase.find(params[:id])
-
     if @phrase.user != current_user
       return render :text => 'Not Allowed', :status => :forbidden
     end
   end
 
   def update
-    @phrase = Phrase.find(params[:id])
-
     if @phrase.user != current_user
       return render :text => 'Not Allowed', :status => :forbidden
     end
@@ -44,15 +42,13 @@ class PhrasesController < ApplicationController
     @phrase.update_attributes(phrase_params)
 
     if @phrase.valid?
-      redirect_to phrase_path(@phrase)
+      redirect_to phrase_path(@phrase), notice: "Updated..."
     else
-      render :new, :status => :unprocessable_entity
+      render :edit, :status => :unprocessable_entity
     end
   end
 
   def delete
-    @phrase = Phrase.find(params[:id])
-
     if @phrase.user != current_user
       return render :text => 'Not Allowed', :status => :forbidden
     end
@@ -62,6 +58,10 @@ class PhrasesController < ApplicationController
   end
 
   private
+
+  def set_phrase
+      @phrase = Phrase.find(params[:id])
+  end
 
   def phrase_params
     params.require(:phrase).permit(:phrase, :author, :background, :foreground, :font)
