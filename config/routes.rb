@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root :to => "pages#home"
 
-  resources :phrases, :only => [:new, :index, :show]
+  resources :phrases
   resources :cup, :only => [:show, :update]
   resource :dashboard, :only => [:show]
 
