@@ -8,10 +8,10 @@ class User < ActiveRecord::Base
   has_many :phrases
 
   def self.from_omniauth(auth)
-    user = User.where(email: auth.info.email).first
+    result = User.where(email: auth.info.email).first
 
-    if user
-      return user
+    if result
+      return result
     else
       where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
         user.fullname = auth.info.name
