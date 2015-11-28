@@ -1,0 +1,17 @@
+<h1>Phrases#show</h1>
+
+<div class="col-xs-10 col-xs-offset-1">
+  <p><%= @phrase.phrase %></p>
+  <p><%= @phrase.author %></p>
+
+  <p><%= @phrase.background %></p>
+  <p><%= @phrase.foreground %></p>
+  <p><%= @phrase.font %></p>
+
+  <% if @phrase.user == current_user %>
+  <%= link_to 'Edit', edit_phrase_path(@phrase) %>
+  <%= link_to 'Delete', phrase_path(@phrase),
+            method: :delete,
+            data: { confirm: 'Are you sure?' } %>
+  <% end %>
+ </div>

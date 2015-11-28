@@ -29,6 +29,7 @@ class PhrasesController < ApplicationController
 
 
   def edit
+    set_phrase
     if @phrase.user != current_user
       return render :text => 'Not Allowed', :status => :forbidden
     end
@@ -48,7 +49,8 @@ class PhrasesController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
+    set_phrase
     if @phrase.user != current_user
       return render :text => 'Not Allowed', :status => :forbidden
     end
