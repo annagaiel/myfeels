@@ -6,6 +6,9 @@ class User < ActiveRecord::Base
   validates :fullname, :presence => true, length: {maximum: 50, minimum: 2}
 
   has_many :phrases
+  has_one :cup
+
+  after_create :create_cup
 
   def self.from_omniauth(auth)
     result = User.where(email: auth.info.email).first
@@ -23,4 +26,11 @@ class User < ActiveRecord::Base
       end
     end
   end
+
+  private
+
+  def create_cup
+    Cup.create(user_id: self.id)
+  end
+
 end

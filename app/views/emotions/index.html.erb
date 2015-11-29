@@ -1,0 +1,16 @@
+
+<div class="container">
+<h1>Emotions#index</h1>
+
+<%= simple_form_for @emotion do |f| %>
+<%= f.input :name %>
+<%= f.input :is_positive, as: :boolean, checked_value: true, unchecked_value: false %>
+<%= f.submit 'Add Emotion' %>
+<% end %>
+
+<% @emotions.each do |emotion| %>
+
+  <p><%= emotion.name %></p>
+
+<% end %>
+</div>
