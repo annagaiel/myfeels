@@ -4,7 +4,11 @@
 
 <%= simple_form_for @emotion do |f| %>
 <%= f.input :name %>
-<%= f.check_box :is_positive, as: :boolean, checked_value: true, unchecked_value: false %> Is positive?
+<div class="checkbox-inline">
+<%= f.check_box :is_positive, as: :boolean, checked_value: true, unchecked_value: false %>
+<%= f.label :is_positive, "Is positive?".upcase %>
+</div>
+
 <br />
 <br />
 
