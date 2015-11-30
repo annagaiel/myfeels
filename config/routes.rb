@@ -8,7 +8,11 @@ Rails.application.routes.draw do
   root "pages#home"
 
   resources :phrases
-  resource :cup, :only => [:show, :create]
+  resource :cup, :only => [:show, :create] do
+    collection do
+      delete 'clear_all'
+    end
+  end
   resource :dashboard, :only => [:show]
   resources :emotions do
     collection do

@@ -1,4 +1,5 @@
 <h1>Cup#show</h1>
 <p>Find me in app/views/cup/show.html.erb</p>
 
-<%= link_to 'Add Emotion', emotions_path %>
+<%= link_to 'Add Emotion', emotions_path, :class => 'btn btn-primary' %>
+<%= link_to 'Clear Cup', clear_all_cup_path, method: :delete, :class => 'btn btn-default' %>
