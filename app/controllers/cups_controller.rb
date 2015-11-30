@@ -1,5 +1,7 @@
 class CupsController < ApplicationController
+
   def show
+    @emotions = current_user.cup.emotions
   end
 
   def clear_all
