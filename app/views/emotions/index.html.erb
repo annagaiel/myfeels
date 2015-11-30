@@ -1,16 +1,27 @@
-
-<div class="container">
 <h1>Emotions#index</h1>
+
+<div class="col-xs-10 col-xs-offset-1">
 
 <%= simple_form_for @emotion do |f| %>
 <%= f.input :name %>
-<%= f.input :is_positive, as: :boolean, checked_value: true, unchecked_value: false %>
-<%= f.submit 'Add Emotion' %>
+<%= f.check_box :is_positive, as: :boolean, checked_value: true, unchecked_value: false %> Is positive?
+<br />
+<br />
+
+<%= f.submit 'Add Emotion', :class => 'btn btn-primary' %>
 <% end %>
+<br />
 
+<%= simple_form_for :emotion, url: bulk_delete_emotions_path, method: :delete do |f| %>
 <% @emotions.each do |emotion| %>
-
-  <p><%= emotion.name %></p>
-
+    <div class="checkbox-inline">
+      <%= check_box_tag "emotion_ids[#{emotion.id}]", emotion.id, false, class: 'checkbox' %>
+      <%= label_tag "emotion_ids[#{emotion.id}]", emotion.name.upcase %>
+    </div>
+  <br />
+<% end %>
+  <br />
+<%= f.submit 'Delete', :class => 'btn btn-primary' %>
+<%= link_to "Back", cup_path, :class => 'btn btn-default' %>
 <% end %>
 </div>

@@ -33,7 +33,7 @@
           <%= image_tag avatar_url(current_user), class: "img-circle avatar-small" %>&nbsp;
           <%= current_user.fullname %><span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Your Cup</a></li>
+          <li><%= link_to 'Your Cup', cup_path %></li>
             <li><a href="#">Your Phrases</a></li>
             <li><a href="#">Your Wish List</a></li>
             <li><%= link_to "Edit Profile", edit_user_registration_path %></li>

@@ -10,5 +10,9 @@ Rails.application.routes.draw do
   resources :phrases
   resource :cup, :only => [:show, :create]
   resource :dashboard, :only => [:show]
-  resources :emotions
+  resources :emotions do
+    collection do
+      delete 'bulk_delete'
+    end
+  end
 end
