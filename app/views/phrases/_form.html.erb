@@ -12,10 +12,11 @@
         <%= f.input :font %>
         <br />
         <%= f.submit 'Create', :class => 'btn btn-primary' %>
-        <%= button_tag(type: 'button', class: "btn btn-default") do %>
+        <%= button_tag(type: 'button', class: "btn btn-default", id: 'preview-button', remote: true) do %>
           <i class="fa fa-arrow-circle-down"></i> Preview
         <% end %>
       <% end %>
+      <section id="preview-section">
       <blockquote class="quote-box center-block text-center">
         <div class="quote text-center"><i class="fa fa-quote-left fa-2x"></i></div>
         <p class="quote-text">
@@ -28,6 +29,7 @@
           </p>
         </div>
       </blockquote>
+      </section>
     </div>
   </div>
 </div>
