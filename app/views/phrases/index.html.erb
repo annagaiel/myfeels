@@ -12,10 +12,11 @@
     <%= link_to 'Show', phrase_path(my_phrase) %>
 
     <% if my_phrase.user == current_user %>
-    <%= link_to 'Edit', edit_phrase_path(my_phrase) %>
+    <%= link_to 'Edit', edit_phrase_path(my_phrase), :class => 'btn btn-primary' %>
     <%= link_to 'Delete', phrase_path(my_phrase),
               method: :delete,
-              data: { confirm: 'Are you sure?' } %>
+              data: { confirm: 'Are you sure?' },
+              :class => 'btn btn-danger' %>
     <% end %>
    </div>
 <% end %>
