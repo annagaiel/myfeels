@@ -1,6 +1,6 @@
-<h1>Emotions#index</h1>
-
 <div class="col-xs-10 col-xs-offset-1">
+
+<h1>Change your Cup's Mood</h1>
 
 <%= simple_form_for @emotion do |f| %>
 <%= f.input :name %>
@@ -16,6 +16,8 @@
 <% end %>
 <br />
 
+<h2>Emotions in your Cup</h2>
+
 <%= simple_form_for :emotion, url: bulk_delete_emotions_path, method: :delete do |f| %>
 <% @emotions.each do |emotion| %>
     <div class="checkbox-inline">
@@ -24,7 +26,7 @@
     </div>
   <br />
 <% end %>
-  <br />
+<br />
 <%= f.submit 'Delete', :class => 'btn btn-primary' %>
 <%= link_to "Back", cup_path, :class => 'btn btn-default' %>
 <% end %>
