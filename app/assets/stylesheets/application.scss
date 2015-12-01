@@ -47,3 +47,24 @@ hr {
 .quote-text{
     font-size: 19px;
 }
+
+body {
+  background-color: #E2EDF3;
+}
+
+h1, h2 {
+    color: #364656;
+    font-weight: 300;
+    font-size: 44px;
+}
+
+p {
+    max-width: 500px;
+    display: block;
+    margin: 0 auto;
+    text-align: left;
+    margin-top: 20px;
+    font-size: 20px;
+    line-height: 180%;
+    font-weight: 300;
+}
