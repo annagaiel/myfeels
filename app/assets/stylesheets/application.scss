@@ -19,3 +19,31 @@
 .avatar-full {
   width: 100%;
 }
+
+blockquote{
+    border-left:none
+}
+
+.quote-box{
+    overflow: hidden;
+    margin-top: -50px;
+    padding-top: -100px;
+    border-radius: 17px;
+    margin-top: 25px;
+    width: 600px;
+    box-shadow: 2px 2px 2px 2px #E0E0E0;
+
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+.quote-text{
+    font-size: 19px;
+}

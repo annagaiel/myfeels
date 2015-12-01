@@ -2,15 +2,17 @@
 
 <% @phrases.each do |my_phrase| %>
   <div class="col-xs-10 col-xs-offset-1">
-    <p><%= my_phrase.phrase %></p>
-    <p><%= my_phrase.author %></p>
-
-    <p><%= my_phrase.background %></p>
-    <p><%= my_phrase.foreground %></p>
-    <p><%= my_phrase.font %></p>
-
-    <%= link_to 'Show', phrase_path(my_phrase) %>
-
+  <blockquote class="quote-box center-block text-center" style="color:<%= my_phrase.foreground%>; background-color:<%= my_phrase.background%>; font:<%= my_phrase.font%>">
+      <div class="quote text-center"><i class="fa fa-quote-left fa-2x"></i></div>
+      <%= link_to my_phrase.phrase, phrase_path(my_phrase), :class => "quote-text" %>
+      <hr style="background-color:<%= my_phrase.foreground%>;"/>
+      <div class="phrase-actions">
+        <p class="phrase-bottom pull-left">
+          <%= my_phrase.author %>
+        </p>
+      </div>
+    </blockquote>
+    <div class="center-block text-center">
     <% if my_phrase.user == current_user %>
     <%= link_to 'Edit', edit_phrase_path(my_phrase), :class => 'btn btn-primary' %>
     <%= link_to 'Delete', phrase_path(my_phrase),
@@ -18,5 +20,6 @@
               data: { confirm: 'Are you sure?' },
               :class => 'btn btn-danger' %>
     <% end %>
+    </div>
    </div>
 <% end %>
