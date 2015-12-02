@@ -1,11 +1,11 @@
 <h1 class="text-center">View all Phrases</h1>
 
 <% @phrases.each do |my_phrase| %>
-  <div class="col-xs-10 col-xs-offset-1">
+  <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3">
   <blockquote class="quote-box center-block text-center" style="color:<%= my_phrase.foreground%>; background-color:<%= my_phrase.background%>; font:<%= my_phrase.font%>">
       <div class="quote text-center"><i class="fa fa-quote-left fa-2x"></i></div>
-      <%= link_to my_phrase.phrase, phrase_path(my_phrase), :class => "quote-text" %>
-      <hr style="background-color:<%= my_phrase.foreground%>;"/>
+      <%= link_to my_phrase.phrase, phrase_path(my_phrase), :class => "quote-text", :style => "color:#{my_phrase.foreground}" %>
+      <hr style="border-top: solid 1px <%= my_phrase.foreground%>;"/>
       <div class="phrase-actions">
         <p class="phrase-bottom pull-left">
           <%= my_phrase.author %>
