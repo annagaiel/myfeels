@@ -5,7 +5,8 @@ class User < ActiveRecord::Base
 
   validates :fullname, :presence => true, length: {maximum: 50, minimum: 2}
 
-  has_many :phrases
+  has_many :phrases, dependent: :destroy
+  has_many :comments
   has_one :cup
 
   after_create :create_cup

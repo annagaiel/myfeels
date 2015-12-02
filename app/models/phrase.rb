@@ -7,4 +7,5 @@ class Phrase < ActiveRecord::Base
   validates :foreground, presence: true
   validates :font, presence: true
 
+  has_many :comments, dependent: :destroy
 end
