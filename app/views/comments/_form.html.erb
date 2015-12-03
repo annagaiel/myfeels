@@ -1,4 +1,5 @@
 <%= simple_form_for @comment , :url => phrase_comments_path(@phrase) do |f| %>
+  <%= hidden_field(:comment, :phrase_id, value: @phrase.id) %>
   <%= f.input :content %>
   <br />
   <%= f.submit 'Create Comment', :class => 'btn btn-primary' %>

@@ -23,4 +23,11 @@
 
   <%= render 'comments/form'%>
 
+  <% @phrase.comments.each do |c| %>
+    <p><%= c.content %></p>
+    <%= link_to 'Delete', phrase_comment_path(@phrase, c),
+            method: :delete, data: {confirm:'Are you sure?'},
+            :class => 'btn btn-danger'%>
+  <% end %>
+
 </div>
