@@ -7,7 +7,10 @@ Rails.application.routes.draw do
 
   root "pages#home"
 
-  resources :phrases
+  resources :phrases do
+    resources :comments, :only => [:edit, :create, :update, :destroy]
+  end
+
   resource :cup, :only => [:show, :create] do
     collection do
       delete 'clear_all'

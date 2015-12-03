@@ -1,5 +1,5 @@
 class PhrasesController < ApplicationController
-  before_action :set_phrase, only: [:edit, :update, :delete]
+  before_action :set_phrase, only: [:edit, :update, :destroy]
   before_action :authenticate_user!, :only => [:new, :create, :edit, :update, :destroy]
 
   def index
@@ -25,20 +25,17 @@ class PhrasesController < ApplicationController
     if @phrase.blank?
       render :text => "Phrase is Not Found", :status => :not_found
     end
+    @comment = Comment.new
   end
 
 
   def edit
     set_phrase
-    if @phrase.user != current_user
-      return render :text => 'Not Allowed', :status => :forbidden
-    end
+    allowed_user
   end
 
   def update
-    if @phrase.user != current_user
-      return render :text => 'Not Allowed', :status => :forbidden
-    end
+    allowed_user
 
     @phrase.update_attributes(phrase_params)
 
@@ -51,12 +48,10 @@ class PhrasesController < ApplicationController
 
   def destroy
     set_phrase
-    if @phrase.user != current_user
-      return render :text => 'Not Allowed', :status => :forbidden
-    end
+    allowed_user
 
     @phrase.destroy
-    redirect_to phrase_path
+    redirect_to phrase_path, notice: "Deleted ..."
   end
 
   private
@@ -67,5 +62,11 @@ class PhrasesController < ApplicationController
 
   def phrase_params
     params.require(:phrase).permit(:phrase, :author, :background, :foreground, :font)
+  end
+
+  def allowed_user
+    if @phrase.user != current_user
+      return render :text => 'Not Allowed', :status => :forbidden
+    end
   end
 end
