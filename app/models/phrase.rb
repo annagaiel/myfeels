@@ -8,4 +8,7 @@ class Phrase < ActiveRecord::Base
   validates :font, presence: true
 
   has_many :comments, dependent: :destroy
+
+  acts_as_taggable # Alias for acts_as_taggable_on :tags
+  acts_as_taggable_on :inspirationals
 end

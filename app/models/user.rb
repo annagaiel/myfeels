@@ -10,7 +10,6 @@ class User < ActiveRecord::Base
   has_one :cup
 
   after_create :create_cup
-
   def self.from_omniauth(auth)
     result = User.where(email: auth.info.email).first
 

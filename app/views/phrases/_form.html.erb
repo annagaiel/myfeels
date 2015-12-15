@@ -7,6 +7,8 @@
         <%= f.input :background %>
         <%= f.input :foreground %>
         <%= f.input :font %>
+        <%= f.input :inspirational_list, input_html: { value: @phrase.inspirationals.map{|v| v.name}.join(",") } %>
+        <%= f.input :inspirationals %>
         <br />
         <%= f.submit 'Create', :class => 'btn btn-primary' %>
         <%= button_tag(type: 'button', class: "btn btn-default", id: 'preview-button') do %>

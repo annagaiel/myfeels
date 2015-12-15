@@ -61,7 +61,7 @@ class PhrasesController < ApplicationController
   end
 
   def phrase_params
-    params.require(:phrase).permit(:phrase, :author, :background, :foreground, :font)
+    params.require(:phrase).permit(:phrase, :author, :background, :foreground, :font, :inspirational_list)
   end
 
   def allowed_user
